@@ -12,7 +12,7 @@ consent/
 *.db
 *.sqlite
 *.npz
-
+logs/
 # ===== modelos / checkpoints (podem conter informação biométrica) =====
 checkpoints/
 runs/
