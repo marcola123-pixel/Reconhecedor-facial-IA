@@ -66,15 +66,15 @@ python scripts/evaluate_private.py --run runs/<melhor_exp> --root data/private/p
 ### Resultados
 
 <!-- RESULTS:START -->
-| Exp. | Modelo | Estratégia | Dataset | AUC | EER | Accuracy | F1 | DIR / FAR-desc. | Melhor época |
+| Exp. | Modelo | Estratï¿½gia | Dataset | AUC | EER | Accuracy | F1 | DIR / FAR-desc. | Melhor ï¿½poca |
 |---|---|---|---|---|---|---|---|---|---|
-| E01 | InceptionResnetV1 (pré-treinada) | sem fine-tuning + none | público | 0.989 | 0.022 | 0.979 | 0.979 | 0.950 / 0.062 | 0 |
-| E02 | CNN própria (128-d) | treino do zero + ce | público | 0.834 | 0.243 | 0.758 | 0.763 | 0.086 / 0.464 | 27 |
-| E03 | CNN própria (128-d) | treino do zero + contrastive | público | 0.910 | 0.167 | 0.837 | 0.840 | 0.275 / 0.348 | 30 |
-| E04 | CNN própria (128-d) | treino do zero + triplet | público | 0.922 | 0.146 | 0.856 | 0.860 | 0.491 / 0.329 | 25 |
-| E05 | CNN própria (128-d) | treino do zero + supcon | público | 0.935 | 0.138 | 0.865 | 0.866 | 0.514 / 0.348 | 28 |
-| E06 | InceptionResnetV1 (pré-treinada) | fine-tuning parcial + triplet | público | 0.991 | 0.026 | 0.971 | 0.971 | 0.914 / 0.036 | 9 |
-| E07 | InceptionResnetV1 (pré-treinada) | fine-tuning completo + triplet | público | 0.991 | 0.021 | 0.976 | 0.976 | 0.923 / 0.017 | 3 |
+| E01 | InceptionResnetV1 (prï¿½-treinada) | sem fine-tuning + none | pï¿½blico | 0.989 | 0.022 | 0.979 | 0.979 | 0.950 / 0.062 | 0 |
+| E02 | CNN prï¿½pria (128-d) | treino do zero + ce | pï¿½blico | 0.834 | 0.243 | 0.758 | 0.763 | 0.086 / 0.464 | 27 |
+| E03 | CNN prï¿½pria (128-d) | treino do zero + contrastive | pï¿½blico | 0.910 | 0.167 | 0.837 | 0.840 | 0.275 / 0.348 | 30 |
+| E04 | CNN prï¿½pria (128-d) | treino do zero + triplet | pï¿½blico | 0.922 | 0.146 | 0.856 | 0.860 | 0.491 / 0.329 | 25 |
+| E05 | CNN prï¿½pria (128-d) | treino do zero + supcon | pï¿½blico | 0.935 | 0.138 | 0.865 | 0.866 | 0.514 / 0.348 | 28 |
+| E06 | InceptionResnetV1 (prï¿½-treinada) | fine-tuning parcial + triplet | pï¿½blico | 0.991 | 0.026 | 0.971 | 0.971 | 0.914 / 0.036 | 9 |
+| E07 | InceptionResnetV1 (prï¿½-treinada) | fine-tuning completo + triplet | pï¿½blico | 0.991 | 0.021 | 0.976 | 0.976 | 0.923 / 0.017 | 3 |
 <!-- RESULTS:END -->
 
 *Accuracy e F1 sÃ£o de verificaÃ§Ã£o de pares, no limiar de EER escolhido na validaÃ§Ã£o. DIR/FAR-desc.: taxa de conhecidos aceitos e identificados corretamente / taxa de desconhecidos aceitos (protocolo aberto).*
