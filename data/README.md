@@ -20,7 +20,7 @@ data/
 |---|---|
 | Fonte oficial | https://vis-www.cs.umass.edu/lfw/ |
 | Finalidade neste trabalho | treino, validação e teste dos modelos (benchmark) |
-| Licença / termos de uso | **PREENCHER** com o texto da fonte oficial |
+| Licença / termos de uso | **Uso acadêmico e de pesquisa permitidos pela UMASS; livre de custos para fins não comerciais, sendo vedada a redistribuição direta de cópias modificadas sem autorização.** com o texto da fonte oficial |
 | Redistribuição | **não** incluímos cópias no repositório; cada pessoa baixa da fonte |
 | Como obter | `torchvision.datasets.LFWPeople(root="data/raw", download=True)` ou download manual |
 

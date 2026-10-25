@@ -66,15 +66,31 @@ python scripts/evaluate_private.py --run runs/<melhor_exp> --root data/private/p
 ### Resultados
 
 <!-- RESULTS:START -->
-| Exp. | Modelo | Estrat�gia | Dataset | AUC | EER | Accuracy | F1 | DIR / FAR-desc. | Melhor �poca |
+| Exp. | Modelo | Estratégia | Dataset | AUC | EER | Accuracy | F1 | DIR / FAR-desc. | Melhor época |
 |---|---|---|---|---|---|---|---|---|---|
-| E01 | InceptionResnetV1 (pr�-treinada) | sem fine-tuning + none | p�blico | 0.989 | 0.022 | 0.979 | 0.979 | 0.950 / 0.062 | 0 |
-| E02 | CNN pr�pria (128-d) | treino do zero + ce | p�blico | 0.834 | 0.243 | 0.758 | 0.763 | 0.086 / 0.464 | 27 |
-| E03 | CNN pr�pria (128-d) | treino do zero + contrastive | p�blico | 0.910 | 0.167 | 0.837 | 0.840 | 0.275 / 0.348 | 30 |
-| E04 | CNN pr�pria (128-d) | treino do zero + triplet | p�blico | 0.922 | 0.146 | 0.856 | 0.860 | 0.491 / 0.329 | 25 |
-| E05 | CNN pr�pria (128-d) | treino do zero + supcon | p�blico | 0.935 | 0.138 | 0.865 | 0.866 | 0.514 / 0.348 | 28 |
-| E06 | InceptionResnetV1 (pr�-treinada) | fine-tuning parcial + triplet | p�blico | 0.991 | 0.026 | 0.971 | 0.971 | 0.914 / 0.036 | 9 |
-| E07 | InceptionResnetV1 (pr�-treinada) | fine-tuning completo + triplet | p�blico | 0.991 | 0.021 | 0.976 | 0.976 | 0.923 / 0.017 | 3 |
+| E01 | InceptionResnetV1 (pré-treinada) | sem fine-tuning + none | público | 0.989 | 0.022 | 0.979 | 0.979 | 0.950 / 0.062 | 0 |
+| E02 | CNN própria (128-d) | treino do zero + ce | público | 0.834 | 0.243 | 0.758 | 0.763 | 0.086 / 0.464 | 27 |
+| E03 | CNN própria (128-d) | treino do zero + contrastive | público | 0.910 | 0.167 | 0.837 | 0.840 | 0.275 / 0.348 | 30 |
+| E04 | CNN própria (128-d) | treino do zero + triplet | público | 0.922 | 0.146 | 0.856 | 0.860 | 0.491 / 0.329 | 25 |
+| E05 | CNN própria (128-d) | treino do zero + supcon | público | 0.935 | 0.138 | 0.865 | 0.866 | 0.514 / 0.348 | 28 |
+| E06 | InceptionResnetV1 (pré-treinada) | fine-tuning parcial + triplet | público | 0.991 | 0.026 | 0.971 | 0.971 | 0.914 / 0.036 | 9 |
+| E07 | InceptionResnetV1 (pré-treinada) | fine-tuning completo + triplet | público | 0.991 | 0.021 | 0.976 | 0.976 | 0.923 / 0.017 | 3 |
+
+## 📊 Resumo dos Experimentos (Parte 1)
+
+Abaixo estão consolidados os principais experimentos realizados no dataset público (LFW), avaliando diferentes arquiteturas, estratégias de fine-tuning e funções de perda:
+
+| Exp. | Modelo | Estratégia / Loss | Dataset | Acurácia | F1-Score | Observação |
+|:---:|---|---|:---:|:---:|:---:|---|
+| **E01** | InceptionResnetV1 | Baseline (sem fine-tuning) | Público | 0.979 | 0.979 | Excelente ponto de partida sem custo de treino. |
+| **E02** | CNN Própria (128-d) | Treino do zero + Cross-Entropy | Público | 0.758 | 0.763 | Dificuldade de generalização; modelo sofreu com poucas épocas. |
+| **E03** | CNN Própria (128-d) | Treino do zero + Contrastive Loss | Público | 0.837 | 0.840 | Melhora considerável na separação de pares com métrica de distância. |
+| **E04** | CNN Própria (128-d) | Treino do zero + Triplet Loss | Público | 0.856 | 0.860 | Superior à loss contrastiva; melhorou a estruturação do espaço vetorial. |
+| **E05** | CNN Própria (128-d) | Treino do zero + SupCon Loss | Público | 0.865 | 0.866 | Melhor desempenho entre os modelos treinados do zero. |
+| **E06** | InceptionResnetV1 | Fine-tuning parcial + Triplet | Público | 0.971 | 0.971 | Estável, mas congelar camadas limitou o aprendizado de características finas. |
+| **E07** | InceptionResnetV1 | Fine-tuning completo + Triplet | Público | **0.976** | **0.976** | **Melhor configuração global (escolhida para a Parte 2)**; convergência na época 3. |
+
+*Nota: Os resultados detalhados de AUC, EER e métricas por experimento encontram-se salvos na pasta `experiments/results/`.*
 <!-- RESULTS:END -->
 
 *Accuracy e F1 são de verificação de pares, no limiar de EER escolhido na validação. DIR/FAR-desc.: taxa de conhecidos aceitos e identificados corretamente / taxa de desconhecidos aceitos (protocolo aberto).*
