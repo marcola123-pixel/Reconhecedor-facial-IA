@@ -1,0 +1,9 @@
+name: e01_facenet_baseline
+hypothesis: >
+  Um modelo pré-treinado em reconhecimento facial (InceptionResnetV1/VGGFace2), SEM nenhum ajuste,
+  já separa bem "mesma pessoa" de "pessoas diferentes" e serve de teto de referência para os
+  modelos treinados do zero.
+data: {image_size: 160}
+model: {type: facenet, pretrained: vggface2, finetune: frozen}
+loss: {type: none}
+train: {epochs: 0}

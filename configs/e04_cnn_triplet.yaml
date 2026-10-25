@@ -1,0 +1,7 @@
+name: e04_cnn_triplet
+hypothesis: >
+  Triplet loss com mineração semi-hard e margem α=0.2 supera a contrastive (E03), pois compara
+  distâncias relativas (positivo vs. negativo) em vez de distâncias absolutas.
+data: {image_size: 64}
+model: {type: small_cnn, embedding_dim: 128}
+loss: {type: triplet, margin: 0.2}

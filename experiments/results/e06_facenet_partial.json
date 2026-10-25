@@ -1,0 +1,309 @@
+{
+  "name": "e06_facenet_partial",
+  "hypothesis": "Fine-tuning PARCIAL (só os últimos blocos) do modelo pré-treinado, com a melhor loss de métrica entre E03-E05, melhora o E01 sem destruir o que a rede já sabe. Ajuste `loss` após ver E03-E05.\n",
+  "config": {
+    "name": "e06_facenet_partial",
+    "hypothesis": "Fine-tuning PARCIAL (só os últimos blocos) do modelo pré-treinado, com a melhor loss de métrica entre E03-E05, melhora o E01 sem destruir o que a rede já sabe. Ajuste `loss` após ver E03-E05.\n",
+    "seed": 42,
+    "device": null,
+    "data": {
+      "root": "data/processed/lfw",
+      "min_images": 4,
+      "fractions": [
+        0.7,
+        0.15,
+        0.15
+      ],
+      "split_seed": 42,
+      "image_size": 160
+    },
+    "model": {
+      "type": "facenet",
+      "embedding_dim": 128,
+      "pretrained": "vggface2",
+      "finetune": "partial"
+    },
+    "loss": {
+      "type": "triplet",
+      "margin": 0.2,
+      "tau": 0.1,
+      "balance": true
+    },
+    "train": {
+      "epochs": 10,
+      "P": 12,
+      "K": 4,
+      "steps_per_epoch": 60,
+      "optimizer": "adam",
+      "lr": 0.0001,
+      "weight_decay": 0.0001,
+      "num_workers": 0
+    },
+    "eval": {
+      "n_pairs": 3000,
+      "pair_seed": 0,
+      "enroll_k": 3,
+      "known_fraction": 0.5,
+      "protocol_seed": 0,
+      "far_targets": [
+        0.01,
+        0.001
+      ],
+      "batch_size": 128
+    },
+    "output": {
+      "runs_dir": "runs",
+      "results_dir": "experiments/results"
+    }
+  },
+  "environment": {
+    "python": "3.11.6",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "cpu": "Intel64 Family 6 Model 154 Stepping 4, GenuineIntel",
+    "torch": "2.14.1+cpu",
+    "cuda_available": false,
+    "gpu": null,
+    "numpy": "2.4.6",
+    "torchvision": "0.29.1",
+    "facenet-pytorch": "2.5.3",
+    "pillow": "13.0.0"
+  },
+  "parameters": {
+    "total": 27910327,
+    "trainable": 10523136
+  },
+  "data": {
+    "train": {
+      "identities": 427,
+      "images": 4861
+    },
+    "val": {
+      "identities": 92,
+      "images": 1093
+    },
+    "test": {
+      "identities": 91,
+      "images": 779
+    }
+  },
+  "leakage_check": {
+    "identities_disjoint": true,
+    "duplicate_files": 0
+  },
+  "training": {
+    "best_epoch": 9,
+    "seconds": 1415.8,
+    "history": [
+      {
+        "epoch": 0,
+        "val_eer": 0.03366666666666664,
+        "val_auc": 0.9833342222222222,
+        "val_eer_threshold": 0.3289429221253035
+      },
+      {
+        "epoch": 1,
+        "train_loss": 0.013684000155384032,
+        "val_eer": 0.03700000000000002,
+        "val_auc": 0.9789952222222221,
+        "val_eer_threshold": 0.34056582521894674
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.009419483382953332,
+        "val_eer": 0.04200000000000002,
+        "val_auc": 0.9799021111111111,
+        "val_eer_threshold": 0.33072310366176433
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.00868276043717439,
+        "val_eer": 0.03966666666666665,
+        "val_auc": 0.9849481111111111,
+        "val_eer_threshold": 0.36985341712831143
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.006271671768687762,
+        "val_eer": 0.03766666666666665,
+        "val_auc": 0.9811142222222221,
+        "val_eer_threshold": 0.3653863402862883
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.005069323159113992,
+        "val_eer": 0.03800000000000002,
+        "val_auc": 0.9830503333333332,
+        "val_eer_threshold": 0.3659395146871718
+      },
+      {
+        "epoch": 6,
+        "train_loss": 0.005491283521890485,
+        "val_eer": 0.04100000000000002,
+        "val_auc": 0.9829015555555555,
+        "val_eer_threshold": 0.35252992562573865
+      },
+      {
+        "epoch": 7,
+        "train_loss": 0.005288987104177067,
+        "val_eer": 0.03800000000000002,
+        "val_auc": 0.9840567777777778,
+        "val_eer_threshold": 0.3719920931311156
+      },
+      {
+        "epoch": 8,
+        "train_loss": 0.0040456774204964555,
+        "val_eer": 0.03883333333333332,
+        "val_auc": 0.9841246666666666,
+        "val_eer_threshold": 0.38065062703812963
+      },
+      {
+        "epoch": 9,
+        "train_loss": 0.003403712089796803,
+        "val_eer": 0.03633333333333333,
+        "val_auc": 0.9832903333333334,
+        "val_eer_threshold": 0.3607384364994959
+      },
+      {
+        "epoch": 10,
+        "train_loss": 0.0034074773517204448,
+        "val_eer": 0.04116666666666667,
+        "val_auc": 0.9827052222222222,
+        "val_eer_threshold": 0.33947704706009263
+      }
+    ]
+  },
+  "validation": {
+    "auc": 0.9832903333333334,
+    "eer": 0.03633333333333333,
+    "eer_threshold": 0.3607384364994959,
+    "mean_sim_same": 0.7518988937033343,
+    "mean_sim_diff": 0.009529105704346067,
+    "at_threshold": {
+      "eer": {
+        "threshold": 0.3607384364994959,
+        "far": 0.036333333333333336,
+        "frr": 0.036333333333333336,
+        "accuracy": 0.9636666666666667,
+        "precision": 0.9636666666666667,
+        "recall": 0.9636666666666667,
+        "f1": 0.9636666666666667,
+        "confusion": {
+          "tp": 2891,
+          "fn": 109,
+          "fp": 109,
+          "tn": 2891
+        }
+      },
+      "far0.01": {
+        "threshold": 0.4846510315550439,
+        "far": 0.009666666666666667,
+        "frr": 0.064,
+        "accuracy": 0.9631666666666666,
+        "precision": 0.9897779344377864,
+        "recall": 0.936,
+        "f1": 0.9621380846325168,
+        "confusion": {
+          "tp": 2808,
+          "fn": 192,
+          "fp": 29,
+          "tn": 2971
+        }
+      },
+      "far0.001": {
+        "threshold": 0.6661487400489492,
+        "far": 0.0006666666666666666,
+        "frr": 0.19533333333333333,
+        "accuracy": 0.902,
+        "precision": 0.9991721854304636,
+        "recall": 0.8046666666666666,
+        "f1": 0.8914327917282127,
+        "confusion": {
+          "tp": 2414,
+          "fn": 586,
+          "fp": 2,
+          "tn": 2998
+        }
+      }
+    }
+  },
+  "test": {
+    "auc": 0.9908836666666666,
+    "eer": 0.02600000000000001,
+    "mean_sim_same": 0.7596881879921747,
+    "mean_sim_diff": 0.008034735741998283,
+    "at_threshold": {
+      "eer": {
+        "threshold": 0.3607384364994959,
+        "far": 0.03333333333333333,
+        "frr": 0.025666666666666667,
+        "accuracy": 0.9705,
+        "precision": 0.966920277869666,
+        "recall": 0.9743333333333334,
+        "f1": 0.9706126515025735,
+        "confusion": {
+          "tp": 2923,
+          "fn": 77,
+          "fp": 100,
+          "tn": 2900
+        }
+      },
+      "far0.01": {
+        "threshold": 0.4846510315550439,
+        "far": 0.009333333333333334,
+        "frr": 0.042,
+        "accuracy": 0.9743333333333334,
+        "precision": 0.9903514817367333,
+        "recall": 0.958,
+        "f1": 0.9739071501186038,
+        "confusion": {
+          "tp": 2874,
+          "fn": 126,
+          "fp": 28,
+          "tn": 2972
+        }
+      },
+      "far0.001": {
+        "threshold": 0.6661487400489492,
+        "far": 0.0006666666666666666,
+        "frr": 0.16566666666666666,
+        "accuracy": 0.9168333333333333,
+        "precision": 0.9992015968063872,
+        "recall": 0.8343333333333334,
+        "f1": 0.909355131698456,
+        "confusion": {
+          "tp": 2503,
+          "fn": 497,
+          "fp": 2,
+          "tn": 2998
+        }
+      }
+    },
+    "eer_threshold_test_only": 0.3779766645258049
+  },
+  "identification": {
+    "val": {
+      "threshold": 0.636443841114238,
+      "n_known_probes": 394,
+      "n_unknown_probes": 561,
+      "dir": 0.9619289340101523,
+      "frr_known": 0.03553299492385787,
+      "misid_known": 0.0025380710659898475,
+      "far_unknown": 0.035650623885918005,
+      "top1_closed_set": 0.9822335025380711,
+      "n_known_identities": 46,
+      "n_unknown_identities": 46
+    },
+    "test": {
+      "threshold": 0.636443841114238,
+      "n_known_probes": 222,
+      "n_unknown_probes": 422,
+      "dir": 0.9144144144144144,
+      "frr_known": 0.08108108108108109,
+      "misid_known": 0.0045045045045045045,
+      "far_unknown": 0.035545023696682464,
+      "top1_closed_set": 0.9594594594594594,
+      "n_known_identities": 45,
+      "n_unknown_identities": 46
+    }
+  }
+}

@@ -1,0 +1,12 @@
+torch
+torchvision
+numpy
+pillow
+pyyaml
+matplotlib
+facenet-pytorch      # MTCNN (detecção) e InceptionResnetV1 (modelo pré-treinado)
+pytest
+# --- Parte 2 (aplicação web) ---
+fastapi
+uvicorn[standard]
+cryptography

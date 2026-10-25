@@ -1,0 +1,7 @@
+name: e03_cnn_contrastive
+hypothesis: >
+  Contrastive loss (aproximar positivos, afastar negativos até o raio/margem m=1) produz embeddings
+  mais discriminativos que Cross-Entropy para pessoas novas (EER menor que E02).
+data: {image_size: 64}
+model: {type: small_cnn, embedding_dim: 128}
+loss: {type: contrastive, margin: 1.0, balance: true}

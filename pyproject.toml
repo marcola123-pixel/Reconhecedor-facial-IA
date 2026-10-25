@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "facerec"
+version = "0.1.0"
+description = "Reconhecimento facial 1:N com aprendizado de representação (trabalho de IA - UFMS)"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.26", "pillow", "pyyaml", "torch", "torchvision"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

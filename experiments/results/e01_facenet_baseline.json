@@ -1,0 +1,239 @@
+{
+  "name": "e01_facenet_baseline",
+  "hypothesis": "Um modelo pré-treinado em reconhecimento facial (InceptionResnetV1/VGGFace2), SEM nenhum ajuste, já separa bem \"mesma pessoa\" de \"pessoas diferentes\" e serve de teto de referência para os modelos treinados do zero.\n",
+  "config": {
+    "name": "e01_facenet_baseline",
+    "hypothesis": "Um modelo pré-treinado em reconhecimento facial (InceptionResnetV1/VGGFace2), SEM nenhum ajuste, já separa bem \"mesma pessoa\" de \"pessoas diferentes\" e serve de teto de referência para os modelos treinados do zero.\n",
+    "seed": 42,
+    "device": null,
+    "data": {
+      "root": "data/processed/lfw",
+      "min_images": 4,
+      "fractions": [
+        0.7,
+        0.15,
+        0.15
+      ],
+      "split_seed": 42,
+      "image_size": 160
+    },
+    "model": {
+      "type": "facenet",
+      "embedding_dim": 128,
+      "pretrained": "vggface2",
+      "finetune": "frozen"
+    },
+    "loss": {
+      "type": "none",
+      "margin": 0.2,
+      "tau": 0.1,
+      "balance": true
+    },
+    "train": {
+      "epochs": 0,
+      "P": 16,
+      "K": 4,
+      "steps_per_epoch": 100,
+      "optimizer": "adam",
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "num_workers": 0
+    },
+    "eval": {
+      "n_pairs": 3000,
+      "pair_seed": 0,
+      "enroll_k": 3,
+      "known_fraction": 0.5,
+      "protocol_seed": 0,
+      "far_targets": [
+        0.01,
+        0.001
+      ],
+      "batch_size": 128
+    },
+    "output": {
+      "runs_dir": "runs",
+      "results_dir": "experiments/results"
+    }
+  },
+  "environment": {
+    "python": "3.11.6",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "cpu": "Intel64 Family 6 Model 154 Stepping 4, GenuineIntel",
+    "torch": "2.14.1+cpu",
+    "cuda_available": false,
+    "gpu": null,
+    "numpy": "2.4.6",
+    "torchvision": "0.29.1",
+    "facenet-pytorch": "2.5.3",
+    "pillow": "13.0.0"
+  },
+  "parameters": {
+    "total": 27910327,
+    "trainable": 0
+  },
+  "data": {
+    "train": {
+      "identities": 427,
+      "images": 4861
+    },
+    "val": {
+      "identities": 92,
+      "images": 1093
+    },
+    "test": {
+      "identities": 91,
+      "images": 779
+    }
+  },
+  "leakage_check": {
+    "identities_disjoint": true,
+    "duplicate_files": 0
+  },
+  "training": {
+    "best_epoch": 0,
+    "seconds": 0.0,
+    "history": [
+      {
+        "epoch": 0,
+        "val_eer": 0.03366666666666664,
+        "val_auc": 0.9833342222222222,
+        "val_eer_threshold": 0.3289429221253035
+      }
+    ]
+  },
+  "validation": {
+    "auc": 0.9833342222222222,
+    "eer": 0.03366666666666664,
+    "eer_threshold": 0.3289429221253035,
+    "mean_sim_same": 0.7414723504289816,
+    "mean_sim_diff": 0.0358017006167843,
+    "at_threshold": {
+      "eer": {
+        "threshold": 0.3289429221253035,
+        "far": 0.033666666666666664,
+        "frr": 0.033666666666666664,
+        "accuracy": 0.9663333333333334,
+        "precision": 0.9663333333333334,
+        "recall": 0.9663333333333334,
+        "f1": 0.9663333333333334,
+        "confusion": {
+          "tp": 2899,
+          "fn": 101,
+          "fp": 101,
+          "tn": 2899
+        }
+      },
+      "far0.01": {
+        "threshold": 0.4266884614647053,
+        "far": 0.009666666666666667,
+        "frr": 0.04766666666666667,
+        "accuracy": 0.9713333333333334,
+        "precision": 0.98995148995149,
+        "recall": 0.9523333333333334,
+        "f1": 0.9707781175671084,
+        "confusion": {
+          "tp": 2857,
+          "fn": 143,
+          "fp": 29,
+          "tn": 2971
+        }
+      },
+      "far0.001": {
+        "threshold": 0.5922386195702013,
+        "far": 0.0006666666666666666,
+        "frr": 0.12966666666666668,
+        "accuracy": 0.9348333333333333,
+        "precision": 0.9992345962495216,
+        "recall": 0.8703333333333333,
+        "f1": 0.9303402814893996,
+        "confusion": {
+          "tp": 2611,
+          "fn": 389,
+          "fp": 2,
+          "tn": 2998
+        }
+      }
+    }
+  },
+  "test": {
+    "auc": 0.9887645555555555,
+    "eer": 0.02216666666666664,
+    "mean_sim_same": 0.7543025987734353,
+    "mean_sim_diff": 0.027656359317760337,
+    "at_threshold": {
+      "eer": {
+        "threshold": 0.3289429221253035,
+        "far": 0.024333333333333332,
+        "frr": 0.018666666666666668,
+        "accuracy": 0.9785,
+        "precision": 0.9758037785880014,
+        "recall": 0.9813333333333333,
+        "f1": 0.9785607445570882,
+        "confusion": {
+          "tp": 2944,
+          "fn": 56,
+          "fp": 73,
+          "tn": 2927
+        }
+      },
+      "far0.01": {
+        "threshold": 0.4266884614647053,
+        "far": 0.008333333333333333,
+        "frr": 0.03266666666666666,
+        "accuracy": 0.9795,
+        "precision": 0.9914588315681585,
+        "recall": 0.9673333333333334,
+        "f1": 0.9792475113885609,
+        "confusion": {
+          "tp": 2902,
+          "fn": 98,
+          "fp": 25,
+          "tn": 2975
+        }
+      },
+      "far0.001": {
+        "threshold": 0.5922386195702013,
+        "far": 0.001,
+        "frr": 0.09066666666666667,
+        "accuracy": 0.9541666666666667,
+        "precision": 0.9989015012815818,
+        "recall": 0.9093333333333333,
+        "f1": 0.9520153550863724,
+        "confusion": {
+          "tp": 2728,
+          "fn": 272,
+          "fp": 3,
+          "tn": 2997
+        }
+      }
+    },
+    "eer_threshold_test_only": 0.3437789474192007
+  },
+  "identification": {
+    "val": {
+      "threshold": 0.5639023517864233,
+      "n_known_probes": 394,
+      "n_unknown_probes": 561,
+      "dir": 0.9746192893401016,
+      "frr_known": 0.025380710659898477,
+      "misid_known": 0.0,
+      "far_unknown": 0.024955436720142603,
+      "top1_closed_set": 0.9847715736040609,
+      "n_known_identities": 46,
+      "n_unknown_identities": 46
+    },
+    "test": {
+      "threshold": 0.5639023517864233,
+      "n_known_probes": 222,
+      "n_unknown_probes": 422,
+      "dir": 0.9504504504504504,
+      "frr_known": 0.04954954954954955,
+      "misid_known": 0.0,
+      "far_unknown": 0.061611374407582936,
+      "top1_closed_set": 0.9684684684684685,
+      "n_known_identities": 45,
+      "n_unknown_identities": 46
+    }
+  }
+}

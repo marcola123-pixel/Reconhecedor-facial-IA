@@ -1,0 +1,39 @@
+# ===== DADOS PRIVADOS (LGPD) — NUNCA versionar =====
+data/private/
+data/raw/
+data/processed/
+faces/
+dataset/
+dataset_bruto/
+classes.json
+embeddings/
+database/
+consent/
+*.db
+*.sqlite
+*.npz
+
+# ===== modelos / checkpoints (podem conter informação biométrica) =====
+checkpoints/
+runs/
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.safetensors
+weights.bin
+
+# ===== segredos e TLS =====
+certs/
+.env
+*.pem
+*.key
+
+# ===== python / ambiente =====
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/

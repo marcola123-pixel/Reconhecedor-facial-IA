@@ -1,0 +1,8 @@
+name: e02_cnn_crossentropy
+hypothesis: >
+  Uma CNN treinada do zero como classificador (Cross-Entropy sobre as identidades de treino) gera
+  embeddings que generalizam pior para pessoas NÃO vistas do que losses de métrica (E03-E05).
+  Este é o baseline do nosso primeiro desenho (classificador softmax fechado).
+data: {image_size: 64}
+model: {type: small_cnn, embedding_dim: 128}
+loss: {type: ce}

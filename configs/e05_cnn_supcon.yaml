@@ -1,0 +1,7 @@
+name: e05_cnn_supcon
+hypothesis: >
+  InfoNCE supervisionada (SupCon), que usa todos os exemplos do batch como negativos, converge
+  melhor que pares/triplas e entrega o menor EER entre os modelos treinados do zero.
+data: {image_size: 64}
+model: {type: small_cnn, embedding_dim: 128}
+loss: {type: supcon, tau: 0.1}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Portaria — Reconhecimento facial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header>
+  <h1>Portaria — reconhecimento facial</h1>
+  <span class="relogio mono" id="relogio">--:--:--</span>
+</header>
+
+<main>
+  <section class="card camera-card">
+    <video id="video" autoplay playsinline muted></video>
+    <canvas id="canvas" style="display:none;"></canvas>
+    <div class="camera-footer">
+      <span class="dica" id="dica">Clique em "Ligar portaria" para começar</span>
+      <button id="btnLigar">Ligar portaria</button>
+    </div>
+  </section>
+
+  <section class="coluna-direita">
+    <div class="card status-badge aguardando" id="statusBadge">
+      <div class="estado" id="estadoTexto">Aguardando</div>
+      <div class="pessoa" id="pessoaTexto">—</div>
+      <div class="confianca mono" id="confiancaTexto">similaridade: —</div>
+      <div class="barra-confianca"><div id="barraConfianca" style="width:0%"></div></div>
+    </div>
+
+    <div class="card limiar-controle">
+      <label>
+        <span>Limiar de decisão (definido no servidor)</span>
+        <span class="mono" id="limiarValor">—</span>
+      </label>
+    </div>
+
+    <div class="card">
+      <div class="log-titulo">Últimos acessos</div>
+      <div class="log-lista" id="logLista">
+        <div class="vazio">Nenhum acesso registrado ainda</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="/static/app.js"></script>
+
+</body>
+</html>
